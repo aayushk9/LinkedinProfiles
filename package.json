@@ -1,17 +1,18 @@
 {
   "name": "paginationwithlinkedin",
   "version": "1.0.0",
-  "description": "",
+  "description": "Description of your project",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "Aayush",
-  "license": "ISC",
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
     "express": "^4.18.3",
-    "mongoose": "^8.2.2"
+    "mongoose": "^8.2.2",
+    "path": "^0.12.7"
   }
 }

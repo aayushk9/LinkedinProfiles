@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>User Profiles</h1>
+    <div class="user-list">  
+        <% users.forEach(user => { %>
+            <div class="user-card">
+                <h2><%= user.username %></h2>
+                <p><%= user.about %></p>
+            </div>
+        <% }) %>   
+    </div>
+    <div class="pagination">
+        <% if (page > 1) { %>
+            <a href="/mynetwork?page=<%= page - 1 %>&perPage=<%= perPage %>">Previous</a>
+        <% } %>
+        <% if (users.length === perPage) { %>
+            <a href="/mynetwork?page=<%= page + 1 %>&perPage=<%= perPage %>">Next</a>
+        <% } %>
+    </div>
+</body>
+</html>

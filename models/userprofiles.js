@@ -9,8 +9,8 @@ const profileSchema = new mongoose.Schema({
     about: {
        type: String
     }
-});
+} , { collection: 'profileSchema' }); 
 
 const user =  mongoose.model('user', profileSchema);
 
-module.exports = user
+module.exports = user;
