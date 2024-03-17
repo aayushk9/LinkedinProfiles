@@ -4,10 +4,9 @@ const path = require("path");
 const mongoose = require("mongoose");  
 const User = require('./models/userprofiles')
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000  
 const URI = process.env.MONGODB_URI
 
-// Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
@@ -23,10 +22,10 @@ database.once('connected', () => {
    console.log('Database connected to server');  
 })
 
-app.get('/mynetwork', async (req, res) => {
+app.get('/mynetwork', async (req, res) => {   
   try {
       const page = parseInt(req.query.page) || 1;
-      const perPage = parseInt(req.query.perPage) || 10;
+      const perPage = parseInt(req.query.perPage) || 7; 
       const skip = (page - 1) * perPage;
 
       const users = await User.find()
@@ -34,7 +33,6 @@ app.get('/mynetwork', async (req, res) => {
           .limit(perPage)
           .exec();
 
-      // Render the index.ejs view and pass necessary variables
       res.render('index', { users: users, page: page, perPage: perPage });
   } catch (error) {
       console.error(error);
