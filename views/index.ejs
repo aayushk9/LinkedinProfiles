@@ -3,27 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profiles</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>User Profiles</title>      
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative; 
+            min-height: 100vh; 
+        }
+
+        .user-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-card {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);   
+            width: calc(50% - 20px); 
+            margin-bottom: 20px; 
+        }
+
+        .pagination {
+            margin-top: 20px;
+            position: absolute;
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: blue;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+        form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;  
+}
+    </style>
 </head>
 <body>
+    <body>
+        <form action="/mynetwork" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>   
+            <label for="about">About:</label>
+            <textarea id="about" name="about" required></textarea>
+            <button type="submit">Add User</button>
+          </form>
         <h1>User Profiles</h1>
-        <div class="user-list">  
+        <div class="user-list">
             <% users.forEach(user => { %>
-                <div class="user-card">
-                    <h2><%= user.username %></h2>
-                    <p><%= user.about %></p>
-                </div>
-            <% }) %>   
-        </div>   
+            <div class="user-card">
+                <h2><%= user.username %></h2>
+                <p><%= user.about %></p>
+            </div>
+            <% }) %>
+        </div>
     
-    <div class="pagination">
-        <% if (page > 1) { %>
-            <a href="/mynetwork?page=<%= page - 1 %>&perPage=<%= perPage %>">Previous</a>
-        <% } %>
-        <% if (users.length === perPage) { %>
+        
+        <div class="pagination">
+            <% if (page > 1) { %>
+            <a href="/mynetwork?page=<%= page - 1 %>&perPage=<%= perPage %>">Previous</a>     
+            <% } %>
+            <% if (users.length === perPage) { %>
             <a href="/mynetwork?page=<%= page + 1 %>&perPage=<%= perPage %>">Next</a>
-        <% } %>
-    </div>
+            <% } %>
+        </div>
+    </body>
+    
 </body>
 </html>
+      
